@@ -15,8 +15,8 @@ class BMIApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.dark().copyWith(
-        primaryColor: unselectedColor,
-        scaffoldBackgroundColor: selectedColor,
+        primaryColor: kUnselectedColor,
+        scaffoldBackgroundColor: kSelectedColor,
       ),
       home: MainScreen(),
     );

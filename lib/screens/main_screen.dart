@@ -17,6 +17,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   Gender gender = Gender.female;
+  int height = 170;
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +78,54 @@ class _MainScreenState extends State<MainScreen> {
           ),
           Expanded(
             flex: 1,
-            child: RoundCard(),
+            child: RoundCard(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text('ALTURA'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        height.toString(),
+                        style: TextStyle(
+                          fontSize: 50.0,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                      Text('cm'),
+                    ],
+                  ),
+                  SliderTheme(
+                    data: const SliderThemeData(
+                      thumbShape: RoundSliderThumbShape(
+                        enabledThumbRadius: 15.0,
+                      ),
+                      overlayShape: RoundSliderOverlayShape(
+                        overlayRadius: 25.0,
+                      ),
+                    ),
+                    child: Slider(
+                      min: 100.0,
+                      max: 220.0,
+                      value: height.toDouble(),
+                      activeColor: kSliderActiveColor,
+                      inactiveColor: kSliderInactiveColor,
+                      thumbColor: kSliderThumbColor,
+                      onChanged: (double value) {
+                        setState(() {
+                          height = value.toInt();
+                        });
+                        //debugPrint('VALUE: $value / HEIGHT: $height');
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           Expanded(
             flex: 1,
@@ -98,7 +146,7 @@ class _MainScreenState extends State<MainScreen> {
             onPressed: () {},
             child: const Text('CALCULAR'),
             style: TextButton.styleFrom(
-              backgroundColor: buttonBackgroundColor,
+              backgroundColor: kButtonBackgroundColor,
             ),
           ),
         ],

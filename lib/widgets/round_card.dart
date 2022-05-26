@@ -13,7 +13,7 @@ class RoundCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(5.0),
       decoration: BoxDecoration(
-        color: selected ? selectedColor : unselectedColor,
+        color: selected ? kSelectedColor : kUnselectedColor,
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: child,
